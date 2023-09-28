@@ -1,40 +1,23 @@
+import { Link, NavLink } from 'react-router-dom'
+
+import Logo from '../accessts/logo1.png'
+
 function Navbar() {
   return (
     <>
-      <nav className="bg-gray-100 border-gray-200 dark:bg-gray-900">
+      <nav className="bg-blue_dark ">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-          <a href="/#" className="flex items-center text-gray-900">
-            <svg
-              width="44"
-              height="44"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-              <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5" />
-              <path d="M6 14m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-              <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5" />
-            </svg>
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <Link to={"/"} className="flex gap-2 items-center w-auto overflow-hidden justify-center text-white_primary hover:underline">
+            <img className="object-contain justify-center h-8 w-8" src={Logo} alt="" />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap tracking-tight dark:text-white">
               Evot Project
             </span>
-          </a>
+          </Link>
 
           <div className="flex items-center">
-            {/* <a
-              href="tel:5541251234"
-              className="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"
-            >
-              (555) 412-1234
-            </a> */}
             <a
-              href="#"
-              className="text-lg text-gray-600 dark:text-gray-500 hover:underline mx-5"
+              to={`/login`}
+              className="py-2 px-2 bg-white_primary rounded-lg text-l text-black_primary font-semibold transition delay-75 duration-300 ease-in-out hover:scale-105"
             >
               Login
             </a>
@@ -77,7 +60,7 @@ function Navbar() {
               <ul className="py-2" aria-labelledby="user-menu-button">
                 <li>
                   <a
-                    href="#"
+                    to="#"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Dashboard
@@ -136,42 +119,51 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <nav className="bg-gray-200 dark:bg-gray-700">
+      <nav className="backdrop-blur-sm bg-gray_primary/50 sticky top-0 z-50">
         <div className="max-w-screen-xl px-4 py-3 mx-auto">
           <div className="flex items-center">
             <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  to={"/home"}
+                  className="text-black_primary dark:text-white hover:underline"
                   aria-current="page"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  to={"/search/diploma"}
+                  className="text-black_primary dark:text-white hover:underline"
+                  aria-current="page"
+                >
+                  Buscar titulos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`/about`}
+                  className="text-black_primary dark:text-white hover:underline"
                 >
                   Acerca de
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  to={`/team`}
+                  className="text-black_primary dark:text-white hover:underline"
                 >
-                  Nuestro Team
-                </a>
+                  Nuestro Equipo
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  to={`/partners`}
+                  className="text-black_primary dark:text-white hover:underline"
                 >
                   Nuestros Socios
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

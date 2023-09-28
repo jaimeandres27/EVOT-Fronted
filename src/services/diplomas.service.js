@@ -5,8 +5,10 @@ export const getAll = async() => {
     return response;
 }
 
-export const getByDocument = async(data) => {
+export const getByDocument = async(document) => {
     /* const data = { "cedula": document } */
-    const response = await axiosConfig.get(`diplomas/by/graduate`, data);
+    const response = await axiosConfig.get(`diplomas/by/graduate`,{
+        cedula: document
+    });
     return response;
 }
