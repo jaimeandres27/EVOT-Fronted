@@ -7,11 +7,12 @@ import Diplomas from "./pages/Diplomas";
 import About from "./pages/About";
 import Team from "./pages/Team";
 import Partners from "./pages/Partners";
-import { AuthProvider } from "./context/AuthContext";
 import AdminDashboard from "./pages/AdminDashboard";
-import PrivateRoute from "./routes/PrivateRoute";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
+  const { isLoggedIn } = useAuth();
+
   return (
     <>
       <Navbar />
@@ -22,8 +23,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/partners" element={<Partners />} />
-        <PrivateRoute path="/admin-dashboard" element={<AdminDashboard />} />
-
+        <Route path="/admin-dahsboard" element={<AdminDashboard />} />
       </Routes>
       <Footer />
     </>
