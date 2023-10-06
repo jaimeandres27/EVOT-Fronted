@@ -1,6 +1,4 @@
 import "./App.css";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Diplomas from "./pages/Diplomas";
@@ -14,11 +12,11 @@ import LoginPage from "./pages/LoginPage";
 function App() {
   const { isLoggedIn } = useAuth();
 
+  console.log(isLoggedIn)
+
   return (
     <>
-      {
-        !isLoggedIn 
-        ?
+      {!isLoggedIn ? (
         <>
           <Routes>
             <Route path="/home" element={<Home />} />
@@ -30,11 +28,13 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
           </Routes>
         </>
-        :
+      ) : (
         <>
-          <AdminDashboard />
+          <Routes>
+              <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          </Routes>
         </>
-      }
+      )}
     </>
   );
 }

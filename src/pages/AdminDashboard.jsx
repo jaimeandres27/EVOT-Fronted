@@ -12,6 +12,7 @@ import InstitutionsViewDashboard from "./InstitutionsViewDashboard";
 const AdminDashboard = () => {
   const { authUser, setAuthUser, isloggedIn, setIsLoggedIn } = useAuth();
 
+  console.log(isloggedIn)
   return (
     <>
       <div class="antialiased bg-gray-50 dark:bg-gray-900">

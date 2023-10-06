@@ -48,7 +48,7 @@ function Navbar() {
             </button>
           </div>
         </div>
-        <nav className="backdrop-blur-sm bg-gray_primary/75 relative z-50">
+        <nav className="backdrop-blur-sm bg-white relative z-50">
           <div className="max-w-screen-xl px-4 py-3 mx-auto">
             <div className="flex items-center">
               <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
