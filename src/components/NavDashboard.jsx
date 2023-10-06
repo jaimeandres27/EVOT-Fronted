@@ -1,23 +1,24 @@
+import { Link } from 'react-router-dom';
 import logo from '../accessts/logo1.png'
 
 export default function NavDashboard(props) {
   return (
     <>
-      <nav class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
+      <nav class="bg-blue_dark border-b border-blue_dark px-4 py-2.5  fixed left-0 right-0 top-0 z-50">
         <div class="flex flex-wrap justify-between items-center">
           <div class="flex justify-start items-center">
             <button
               data-drawer-target="drawer-navigation"
               data-drawer-toggle="drawer-navigation"
               aria-controls="drawer-navigation"
-              class="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              class="p-2 mr-2 text-white_primary rounded-lg cursor-pointer md:hidden hover:text-blue_dark hover:bg-gray-100 focus:bg-gray-100  focus:ring-2 focus:ring-gray-100 
+              focus:text-blue_dark  "
             >
               <svg
                 aria-hidden="true"
                 class="w-6 h-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   fill-rule="evenodd"
@@ -30,7 +31,6 @@ export default function NavDashboard(props) {
                 class="hidden w-6 h-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   fill-rule="evenodd"
@@ -40,8 +40,8 @@ export default function NavDashboard(props) {
               </svg>
               <span class="sr-only">Toggle sidebar</span>
             </button>
-            <a
-              href="https://flowbite.com"
+            <Link
+              to={"/home"}
               class="flex items-center justify-between mr-4"
             >
               <img
@@ -49,33 +49,12 @@ export default function NavDashboard(props) {
                 class="mr-3 h-8"
                 alt="Flowbite Logo"
               />
-              <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span class="text-white_primary self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Evot Project
               </span>
-            </a>
+            </Link>
           </div>
           <div class="flex items-center lg:order-2">
-            <button
-              type="button"
-              data-drawer-toggle="drawer-navigation"
-              aria-controls="drawer-navigation"
-              class="p-2 mr-1 text-gray-500 rounded-lg md:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            >
-              <span class="sr-only">Toggle search</span>
-              <svg
-                aria-hidden="true"
-                class="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  clip-rule="evenodd"
-                  fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                ></path>
-              </svg>
-            </button>
             <button
               type="button"
               class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"

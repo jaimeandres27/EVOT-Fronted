@@ -1,13 +1,17 @@
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+
 export default function Home() {
 
 
 
   return (
     <>
-      <section className="bg-white_primary ">
-        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+      <Navbar />
+      <section className="bg-white_primary h-screen">
+        <div className="grid justify-center h-full max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-blue_dark dark:text-white">
+            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-blue_dark dark:text-blue_dark">
               Vaida tus titulos
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
@@ -33,20 +37,21 @@ export default function Home() {
             </a>
             <a
               href="#"
-              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-blue_dark border border-blue_dark rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white "
+              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-blue_dark border border-blue_dark rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-blue_dark "
             >
                 Volverme Socio
             </a>
           </div>
-          <div className="grid items-center lg:m t-0 lg:col-span-5 lg:flex w-[auto] h-[30rem] text-center ">
+          <div className="grid items-center justify-center lg:m t-0 lg:col-span-5 lg:flex w-full h-full text-center ">
             <img
-            className="w-full h-full object-contain"
+            className="w-3/4 h-full object-contain"
               src="https://images.unsplash.com/photo-1627556704302-624286467c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
               alt="mockup"
             />
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

@@ -1,7 +1,11 @@
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+
 export default function () {
     return (
         <>
-            <main className="w-[100vw] h-[auto] grid place-items-center">
+            <Navbar />
+            <main className="w-screen h-screen  py-6 grid place-items-center">
                 <section className="w-full h-64 flex items-center justify-center bg-[url('../../src/accessts/about.jpg')] bg-auto bg-origin-content bg-top ">
                     <h1 className="w-full mb-4 text-4xl font-extrabold tracking-tight text-white_primary text-center leading-none md:text-5xl xl:text-6xl">
                         Acerca de Nosotros
@@ -13,6 +17,7 @@ export default function () {
                     </p>
                 </section>
             </main>
+            <Footer/>
         </>
     )
 }

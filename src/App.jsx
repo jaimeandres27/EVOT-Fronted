@@ -9,23 +9,32 @@ import Team from "./pages/Team";
 import Partners from "./pages/Partners";
 import AdminDashboard from "./pages/AdminDashboard";
 import { useAuth } from "./context/AuthContext";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const { isLoggedIn } = useAuth();
 
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/search/diploma" element={<Diplomas />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/partners" element={<Partners />} />
-        <Route path="/admin-dahsboard" element={<AdminDashboard />} />
-      </Routes>
-      <Footer />
+      {
+        !isLoggedIn 
+        ?
+        <>
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/search/diploma" element={<Diplomas />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/partners" element={<Partners />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </>
+        :
+        <>
+          <AdminDashboard />
+        </>
+      }
     </>
   );
 }

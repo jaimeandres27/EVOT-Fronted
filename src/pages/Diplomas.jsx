@@ -2,6 +2,8 @@ import Table from "../components/Table";
 import { useState, useEffect } from "react";
 import * as API from "../services/diplomas.service";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function () {
   const [document, setDocument] = useState(0);
@@ -28,7 +30,8 @@ export default function () {
 
   return (
     <>
-      <main className="grid items-center justify-center w-full h-[100%] my-6">
+      <Navbar />
+      <main className="grid items-center justify-center w-full h-[100%] py-8">
         <h1 className="w-full mb-4 text-4xl font-extrabold tracking-tight text-blue_dark text-center leading-none md:text-5xl xl:text-6xl">
           Busca tú diplomas
         </h1>
@@ -36,7 +39,7 @@ export default function () {
           <div className="mb-6 mt-10 flex max-w-lg justify-center items-center gap-4">
             <label
               for="document"
-              className="block mb-2 text-l font-medium text-gray-900 dark:text-white w-1/2 items-center text-center   "
+              className="block mb-2 text-l font-medium text-blue_dark dark:text-blue_dark w-1/2 items-center text-center   "
             >
               Documento
             </label>
@@ -44,8 +47,8 @@ export default function () {
               type="number"
               id="document"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                          focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
-                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+                          focus:ring-blue_dark focus:border-blue_dark block w-full p-2.5 dark:border-blue_dark
+                          dark:placeholder-gray-400 dark:text-white  dark:focus:border-blue_dark"
               placeholder="Documento"
               value={document}
               onChange={(e) => {
@@ -58,8 +61,7 @@ export default function () {
               type="button"
               className="text-white bg-blue_dark transition delay-75 hover:bg-blue_primary focus:outline-none focus:ring-4
                 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 
-                dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 
-                dark:border-gray-700"
+                "
             >
               <svg
                 width="20"
@@ -90,6 +92,7 @@ export default function () {
           }
         </section>
       </main>
+      <Footer />
     </>
   );
 }
