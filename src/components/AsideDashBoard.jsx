@@ -1,18 +1,22 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-export default function AsideDashboard(props) {
+export default function AsideDashboard() {
+
+  const { authUser } = useAuth();
+
   return (
     <>
       <aside
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-gray_primary border-r border-gray-200 md:translate-x-0 "
+        class="fixed top-0 left-0 z-40 w-56 h-screen pt-14 transition-transform -translate-x-full bg-gray_primary border-r border-gray-200 md:translate-x-0 "
         aria-label="Sidenav"
         id="drawer-navigation"
       >
         <div class="overflow-y-auto py-5 px-3 h-full bg-gray_primary ">
-          <ul class="space-y-2">
+          <ul class="space-y-2 mt-10">
             <li>
               <Link
-                to={"/diplomas"}
+                to={"diplomas"}
                 class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -30,7 +34,7 @@ export default function AsideDashboard(props) {
             </li>
             <li>
               <Link
-                to={"/institutions"}
+                to={"institutions"}
                 class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -44,12 +48,12 @@ export default function AsideDashboard(props) {
                   <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
                 </svg>
                 <span class="flex-1 ml-3 whitespace-nowrap">Insituciones</span>
-                
+
               </Link>
             </li>
             <li>
               <Link
-                to={"/students"}
+                to={"students"}
                 class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -63,10 +67,16 @@ export default function AsideDashboard(props) {
                   <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
                 </svg>
                 <span class="flex-1 ml-3 whitespace-nowrap">Estudiantes</span>
-                
+
               </Link>
             </li>
           </ul>
+        </div>
+        <div class="absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-gray_primary z-20 border-r ">
+          
+          <p class="z-10 py-2 text-sm font-medium text-blue_dark rounded-lg shadow-sm">
+              { authUser ? authUser.correo : 'email user' }            
+          </p>
         </div>
       </aside>
     </>
