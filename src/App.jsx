@@ -8,11 +8,16 @@ import Partners from "./pages/Partners";
 import AdminDashboard from "./pages/AdminDashboard";
 import { useAuth } from "./context/AuthContext";
 import LoginPage from "./pages/LoginPage";
+import { useEffect } from "react";
 
 function App() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
 
   console.log(isLoggedIn)
+
+  useEffect(() => {
+    setIsLoggedIn(false)
+  },[])
 
   return (
     <>
