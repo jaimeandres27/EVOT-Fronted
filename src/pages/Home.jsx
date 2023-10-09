@@ -1,9 +1,20 @@
+import { useEffect } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { useAuth } from "../context/AuthContext";
 
 export default function Home() {
 
 
+  const { authUser } = useAuth()
+
+  console.log(authUser);
+
+  useEffect(() => {
+    if(authUser == null){
+      localStorage.clear()
+    }
+  })
 
   return (
     <>
