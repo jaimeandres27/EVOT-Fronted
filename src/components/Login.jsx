@@ -33,10 +33,12 @@ function Login() {
 
       const data = await respuesta.json();
 
-      console.log(data);
+      
       if (data.error) {
         setErrores(data.errors);
       } else {
+        localStorage.setItem('TOKEN', data?.usuario.token)
+        localStorage.setItem('USER', JSON.stringify(data?.usuario))
         setUsuario(data.usuario);
         setAuthUser(data.usuario);
         setIsLoggedIn(true)

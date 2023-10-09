@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useAuth } from "../context/AuthContext";
 import NavDashboard from "../components/NavDashboard";
 import AsideDashboard from "../components/AsideDashBoard";
-import { Route, Routes } from "react-router-dom";
+import { useNavigate , Route, Routes } from "react-router-dom";
 import DiplomasViewDashboard from "./DiplomasViewDashboard";
 import StudentsViewDashboard from "./StudentsViewDashBoard";
 import InstitutionsViewDashboard from "./InstitutionsViewDashboard";
@@ -11,9 +11,18 @@ import InstitutionsViewDashboard from "./InstitutionsViewDashboard";
 const AdminDashboard = () => {
   const { authUser, setAuthUser, isloggedIn, setIsLoggedIn } = useAuth();
 
-  console.log(isloggedIn)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!isloggedIn){
+      navigate("/home")
+    }
+  },[])
+
+
   return (
     <>
+      
       <div class="antialiased bg-gray-50 dark:bg-gray-900">
         <NavDashboard />
         <AsideDashboard />
@@ -29,6 +38,9 @@ const AdminDashboard = () => {
           </div>
         </main>
       </div>
+      {
+        !authUser && navigate("/home")
+      }
     </>
   );
 };
