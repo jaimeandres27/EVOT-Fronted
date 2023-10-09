@@ -29,7 +29,6 @@ export default function DiplomasViewDashboard() {
         diplomas
     }
 
-
     async function getDiplomas(){
         try {
             const respuesta = await fetch("http://localhost:4000/api/diplomas", {
@@ -44,7 +43,7 @@ export default function DiplomasViewDashboard() {
     
             console.log(data);
             if (data.error) {
-                setErrores(data.errors);
+                console.log(data.error);
             } else {
                 setDiplomas(data)
             }

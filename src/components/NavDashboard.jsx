@@ -12,6 +12,7 @@ export default function NavDashboard() {
 
   const logout = () => {
     navigate("/home")
+    localStorage.clear()
   }
 
   return (
