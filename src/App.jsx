@@ -1,5 +1,4 @@
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Diplomas from "./pages/Diplomas";
 import About from "./pages/About";
@@ -16,25 +15,17 @@ function App() {
 
   return (
     <>
-      {!isLoggedIn ? (
-        <>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/search/diploma" element={<Diplomas />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/partners" element={<Partners />} />
-            <Route path="/login" element={<LoginPage />} />
-          </Routes>
-        </>
-      ) : (
-        <>
-          <Routes>
-              <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          </Routes>
-        </>
-      )}
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/search/diploma" element={<Diplomas />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/partners" element={<Partners />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin-dashboard/*" element={<AdminDashboard />} />
+      </Routes>
+
     </>
   );
 }
