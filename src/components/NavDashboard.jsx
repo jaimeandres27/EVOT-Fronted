@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../accessts/logo1.png'
+import logo from '../assets/logo1.png'
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 
@@ -7,8 +7,6 @@ export default function NavDashboard() {
 
   const navigate = useNavigate();
   const { authUser } = useAuth();
-
-  console.log(authUser);
 
   const logout = () => {
     navigate("/home")

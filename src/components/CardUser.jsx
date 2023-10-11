@@ -1,9 +1,9 @@
-import developer from '../accessts/developer.jpg'
+import developer from '../assets/developer.jpg'
 
 export default function CardUser() {
     return (
         <>
-            <div className="w-[250px] h-auto grid justify-center overflow-hidden border-solid p-2 border-2 rounded-lg transition ease-in hover:scale-105 hover:shadow-md ">
+            <div className="max-w-[250px] h-auto grid justify-center overflow-hidden border-solid p-2 border-2 rounded-lg transition ease-in hover:scale-105 hover:shadow-md ">
                 <div className="w-[200px] h-[200px] overflow-hidden rounded-lg">
                     <img className="object-contain object-center" src={developer} alt="" />
                 </div>

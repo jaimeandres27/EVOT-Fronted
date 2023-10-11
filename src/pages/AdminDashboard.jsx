@@ -8,9 +8,10 @@ import DiplomasViewDashboard from "./DiplomasViewDashboard";
 import StudentsViewDashboard from "./StudentsViewDashBoard";
 import InstitutionsViewDashboard from "./InstitutionsViewDashboard";
 
-const AdminDashboard = () => {
-  const { authUser, setAuthUser, isloggedIn, setIsLoggedIn } = useAuth();
 
+const AdminDashboard = () => {
+  const { authUser, isloggedIn } = useAuth();
+  
   const navigate = useNavigate();
 
   const clearLocalStorage = () => {

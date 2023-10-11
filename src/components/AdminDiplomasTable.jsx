@@ -1,8 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Dropdown, Button } from "flowbite-react";
+import { Dropdown } from "flowbite-react";
 
 function AdminDiplomasTable({ props }) {
+
+
+  const TOKEN = localStorage.getItem('TOKEN')
+
+  const getDiploma = async(id)=>{
+      
+      try {
+          const response = await fetch(`http://localhost:4000/api/diploma/${id}`, {
+              method: "GET",
+              headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `${TOKEN}`,
+              },
+          });
+
+          const data = await response.json();
+
+          console.log(data);
+
+          if (data.error) {
+              console.log(data.error);
+          } else {
+              console.log(data)
+              props.setDiplomaUpdate(data)
+              
+          }
+      } catch (error) {
+          console.log(error);
+      }
+  }
+
   console.log(props.diplomas);
   return (
     <>
@@ -72,6 +103,7 @@ function AdminDiplomasTable({ props }) {
                           type="button"
                           onClick={() => {
                             props.setOpenModalEditDiploma("openModalEdit");
+                            getDiploma(diploma?._id);
                           }}
                           class="flex w-full items-center py-2 px-4 hover:bg-gray-100 text-gray-700 "
                         >

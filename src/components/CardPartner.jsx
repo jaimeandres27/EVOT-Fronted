@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import ieprav from '../accessts/ieprav.jpg';
+import ieprav from '../assets/ieprav.jpg';
 
 export default function CardPartner(props) {
     return (

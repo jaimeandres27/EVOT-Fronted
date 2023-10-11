@@ -8,33 +8,6 @@ function HeadTableDiplomas() {
     console.log(TOKEN);
 
     const [openModalCreateDiploma, setOpenModalCreateDiploma] = useState("" | undefined);
-    const [institutions, setInstitutions] = useState([]);
-
-
-    const openModalFunction = async () => {
-
-        try {
-            const respuesta = await fetch("http://localhost:4000/api/institutions", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `${TOKEN}`
-                },
-            });
-
-            const data = await respuesta.json();
-
-            console.log(data);
-            if (data.error) {
-                console.log(error);;
-            } else {
-                setInstitutions(data)
-            }
-        } catch (error) {
-            console.log(error);
-        }
-
-    }
 
     return (
         <>
@@ -42,7 +15,6 @@ function HeadTableDiplomas() {
 
                 <div class="w-full m-auto md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-center md:items-center justify-center md:space-x-3 flex-shrink-0">
                     <button onClick={() => {
-                        openModalFunction()
                         setOpenModalCreateDiploma('default');
                     }} type="button" id="createProductModalButton" data-modal-target={"createProductModal"} data-modal-toggle={"createProductModal"} class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2   focus:outline-none ">
                         <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -76,7 +48,7 @@ function HeadTableDiplomas() {
 
 
             {/* <!-- Create modal --> */}
-            <CreateDiplomaModal props={{ openModalCreateDiploma, setOpenModalCreateDiploma, institutions }} />
+            <CreateDiplomaModal props={{ openModalCreateDiploma, setOpenModalCreateDiploma }} />
 
 
         </>

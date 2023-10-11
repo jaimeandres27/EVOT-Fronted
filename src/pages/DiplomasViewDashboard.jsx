@@ -6,11 +6,15 @@ import UpdateDiplomaModal from "../components/UpdateDiplomaModal";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import AdminDiplomasTable from "../components/AdminDiplomasTable";
+import { useInstitutionsContext } from "../context/InstitutionsContext";
+
+import * as API from '../services/institucions.service.js';
 
 export default function DiplomasViewDashboard() {
 
     const { authUser } = useAuth()
-    const navigate  = useNavigate();
+    const { setIntitutions } = useInstitutionsContext();
+    const navigate = useNavigate();
     const role = authUser?.rol
     const TOKEN = localStorage.getItem('TOKEN')
 
@@ -18,7 +22,10 @@ export default function DiplomasViewDashboard() {
     const [openModalPreviewDiploma, setOpenModalPreviewDiploma] = useState("" | undefined);
     const [openModalDeleteDiploma, setOpenModalDeleteDiploma] = useState("" | undefined);
 
-    const [ diplomas, setDiplomas ] = useState([]);
+
+    const [diplomaUpdate, setDiplomaUpdate] = useState(null)
+
+    const [diplomas, setDiplomas] = useState([]);
     const props = {
         openModalEditDiploma,
         setOpenModalEditDiploma,
@@ -26,21 +33,29 @@ export default function DiplomasViewDashboard() {
         setOpenModalPreviewDiploma,
         openModalDeleteDiploma,
         setOpenModalDeleteDiploma,
-        diplomas
+        diplomas,
+        setDiplomaUpdate,
     }
 
-    async function getDiplomas(){
+    const getInstitutions = async () => {
+        const res = await API.getInstitutions(TOKEN);
+        console.log(res.data);
+        setIntitutions(res?.data)
+    }
+
+
+    async function getDiplomas() {
         try {
             const respuesta = await fetch("http://localhost:4000/api/diplomas", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":`${TOKEN}`
+                    "Authorization": `${TOKEN}`
                 },
             });
-    
+
             const data = await respuesta.json();
-    
+
             console.log(data);
             if (data.error) {
                 console.log(data.error);
@@ -48,19 +63,18 @@ export default function DiplomasViewDashboard() {
                 setDiplomas(data)
             }
 
-    
+
         } catch (error) {
             console.log(error);
         }
     }
 
     useEffect(() => {
-        if(role == 'ADMIN')
-        {
-            getDiplomas()
+        if (role == 'ADMIN') {
+            getDiplomas();
+            getInstitutions();
         }
-    },[])
-    console.log(TOKEN)
+    }, [])
 
     return (
         <>
@@ -72,8 +86,8 @@ export default function DiplomasViewDashboard() {
                         <HeadTableDiplomas />
                         <div class=" overflow-x-auto">
                             {/* <!-- Table --> */}
-                            <AdminDiplomasTable  props={props}/>
-                            
+                            <AdminDiplomasTable props={props} />
+
                         </div>
                         <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                             <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -121,9 +135,9 @@ export default function DiplomasViewDashboard() {
             </section>
             {/* <!-- End block --> */}
             {/* <!-- Update modal --> */}
-            <UpdateDiplomaModal props={{ openModalEditDiploma, setOpenModalEditDiploma }} />
+            <UpdateDiplomaModal props={{ openModalEditDiploma, setOpenModalEditDiploma }} diplomaUpdate={diplomaUpdate} />
             {/* <!-- Read modal --> */}
-            <ReadDiplomaModal props={{ openModalPreviewDiploma, setOpenModalPreviewDiploma }} />
+            <ReadDiplomaModal props={{ openModalPreviewDiploma, setOpenModalPreviewDiploma, }} />
             {/* <!-- Delete modal --> */}
             <DeleteModal props={{ openModalDeleteDiploma, setOpenModalDeleteDiploma }} />
         </>
